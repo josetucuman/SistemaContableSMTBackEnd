@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,7 +17,6 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Proveedor implements Serializable {
-
 
     private static final long serialVersionUID = -8685028066877669412L;
     @Id
@@ -31,6 +31,12 @@ public class Proveedor implements Serializable {
     private String nroContacto;
     @Column(name = "proveedor_url_site")
     private String webSite;
+
+    @OneToMany(mappedBy = "proveedor")
+    private List<Factura> facturas;
+
+    @OneToMany(mappedBy = "proveedor")
+    private List<Gastos> gastos;
 
     @Override
     public boolean equals(Object o) {

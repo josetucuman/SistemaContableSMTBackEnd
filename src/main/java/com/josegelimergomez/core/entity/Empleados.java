@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "tbl_employee")
@@ -39,5 +40,7 @@ public class Empleados implements Serializable {
     @Size(max = 70)
     private String email;
 
+    @OneToMany(mappedBy = "empleados", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Payroll> payroll;
 
 }

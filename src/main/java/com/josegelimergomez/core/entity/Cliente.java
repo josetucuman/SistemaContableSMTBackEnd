@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
 
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -27,6 +28,8 @@ public class Cliente {
     @Column(name = "cliente_contacto")
     private String nroContacto;
 
+    @OneToMany(mappedBy = "cliente")
+    private List<Factura> facturas;
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

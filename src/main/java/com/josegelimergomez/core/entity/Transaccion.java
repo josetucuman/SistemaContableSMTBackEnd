@@ -28,6 +28,10 @@ public class Transaccion {
     @Column(name = "fecha_transaccion")
     private LocalDate fecha;
 
+    @ManyToOne
+    @JoinColumn(name = "id_cuenta")
+    private Cuenta cuenta;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

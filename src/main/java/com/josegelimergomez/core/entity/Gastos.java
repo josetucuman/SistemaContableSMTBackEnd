@@ -32,5 +32,12 @@ public class Gastos implements Serializable {
     @Column(name = "gastos_nombre")
     private String nombre;
 
+    @OneToOne
+    @JoinColumn(name = "id_cuenta")
+    private Cuenta cuenta;
+
+    @ManyToOne
+    @JoinColumn(name = "id_proveedor")
+    private Proveedor proveedor;
 
 }

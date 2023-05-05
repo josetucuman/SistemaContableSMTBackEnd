@@ -28,4 +28,15 @@ public class Factura implements Serializable {
     private Double monto;
     @Column(name = "fecha_facturacion")
     private LocalDate fecha;
+
+    @OneToOne
+    @JoinColumn(name = "id_cuenta")
+    Cuenta cuenta;
+    @ManyToOne
+    @JoinColumn(name = "id_proveedor")
+    private Proveedor proveedor;
+
+    @ManyToOne
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;
 }

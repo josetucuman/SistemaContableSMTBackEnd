@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Setter
@@ -26,4 +27,14 @@ public class Cuenta implements Serializable {
     private String codigo;
     @Column(name = "desc")
     private String descripcion;
+
+    @OneToMany(mappedBy = "cuenta")
+    private List<Transaccion> transacciones;
+
+    @OneToOne(mappedBy = "cuenta")
+    private Factura factura;
+
+    @OneToOne(mappedBy = "cuenta")
+    private Gastos gastos;
+
 }
