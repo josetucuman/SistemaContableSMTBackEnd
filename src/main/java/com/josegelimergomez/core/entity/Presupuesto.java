@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -25,5 +26,8 @@ public class Presupuesto {
     private Double ingresoTotalReal;
     private Double gastoTotalReal;
     private Double difIngresoGastoReal;
+
+    @OneToMany(mappedBy = "presupuesto")
+    private List<Ingresos> ingresos;
 
 }
