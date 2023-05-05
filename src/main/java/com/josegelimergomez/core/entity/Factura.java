@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "tbl__sist_cont_facturacion")
+@Table(name = "tbl_facturacion")
 public class Factura implements Serializable {
 
 
@@ -22,9 +22,10 @@ public class Factura implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_factura")
     private Long id;
-
+    @Column(name = "numero_factura")
     private Long nroFactura;
+    @Column(name = "monto_factura")
     private Double monto;
-
+    @Column(name = "fecha_facturacion")
     private LocalDate fecha;
 }

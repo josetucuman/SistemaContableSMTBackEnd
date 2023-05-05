@@ -13,7 +13,7 @@ import java.io.Serializable;
 
 @Builder
 @Entity
-@Table(name = "tbl_sist_cont_cuenta")
+@Table(name = "tbl_cuenta")
 public class Cuenta implements Serializable {
 
 

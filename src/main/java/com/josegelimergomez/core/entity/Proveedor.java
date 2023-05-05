@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "sist_cont_proveedor")
+@Table(name = "tbl_proveedor")
 @Setter
 @Getter
 @ToString

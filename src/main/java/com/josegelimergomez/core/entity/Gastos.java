@@ -1,9 +1,6 @@
 package com.josegelimergomez.core.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -15,7 +12,8 @@ import java.time.LocalDate;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-
+@Entity
+@Table(name = "tbl_gastos")
 public class Gastos implements Serializable {
 
     private static final long serialVersionUID = -5849695544437978250L;

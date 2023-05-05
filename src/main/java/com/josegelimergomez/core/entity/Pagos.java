@@ -14,7 +14,7 @@ import java.util.Objects;
 
 @AllArgsConstructor
 @Entity
-@Table(name = "tbl_sis_cont_pagos")
+@Table(name = "tbl_pagos")
 public class Pagos {
 
     @Id

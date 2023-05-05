@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tbl_sis_cont_transaccion")
+@Table(name = "tbl_transaccion")
 @Setter
 @Getter
 @AllArgsConstructor
@@ -19,8 +19,13 @@ public class Transaccion {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_transaccion")
     private Long idTransaccion;
+    @Column(name = "numero_transaccion")
+    private Long numTrasnsaccion;
+    @Column(name = "descripcion")
     private String descripcion;
+    @Column(name = "monto")
     private Double monto;
+    @Column(name = "fecha_transaccion")
     private LocalDate fecha;
 
     @Override

@@ -13,7 +13,7 @@ import java.util.Objects;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "tbl_sist_cont_client")
+@Table(name = "tbl_client")
 public class Cliente {
 
     @Id
