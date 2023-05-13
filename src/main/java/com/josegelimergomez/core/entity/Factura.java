@@ -32,6 +32,7 @@ public class Factura implements Serializable {
     @OneToOne
     @JoinColumn(name = "id_cuenta")
     Cuenta cuenta;
+
     @ManyToOne
     @JoinColumn(name = "id_proveedor")
     private Proveedor proveedor;

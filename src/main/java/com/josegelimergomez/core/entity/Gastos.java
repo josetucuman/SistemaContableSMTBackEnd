@@ -40,4 +40,8 @@ public class Gastos implements Serializable {
     @JoinColumn(name = "id_proveedor")
     private Proveedor proveedor;
 
+    @ManyToOne
+    @JoinColumn(name = "empleado_id")
+    private Empleados empleado;
+
 }

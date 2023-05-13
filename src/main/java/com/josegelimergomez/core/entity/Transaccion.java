@@ -32,6 +32,12 @@ public class Transaccion {
     @JoinColumn(name = "id_cuenta")
     private Cuenta cuenta;
 
+    @ManyToOne
+    @JoinColumn(name = "id_empleado")
+    private Empleados empleado;
+
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

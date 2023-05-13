@@ -30,4 +30,7 @@ public class Presupuesto {
     @OneToMany(mappedBy = "presupuesto")
     private List<Ingresos> ingresos;
 
+    @OneToMany(mappedBy = "presupuesto")
+    private List<Pagos> pagos;
+
 }

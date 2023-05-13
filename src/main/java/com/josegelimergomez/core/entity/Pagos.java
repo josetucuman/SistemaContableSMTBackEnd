@@ -28,6 +28,12 @@ public class Pagos {
     @Column(name = "monto_pago")
     private Double monto;
 
+    @ManyToOne
+    @JoinColumn(
+            name = "id_presupuesto"
+    )
+    private Presupuesto presupuesto;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
