@@ -2,8 +2,11 @@ package com.josegelimergomez.core.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Table(name = "tbl_payroll")
@@ -12,12 +15,15 @@ import java.util.Date;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class Payroll {
+public class Payroll implements Serializable {
 
+
+    private static final long serialVersionUID = 8079596284232588303L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_payroll")
-    private Long id;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(name = "id_payroll", columnDefinition = "BINARY(16)", nullable = false)
+    private UUID idPayroll;
     private Date date;
     private Double amount;
     @ManyToOne

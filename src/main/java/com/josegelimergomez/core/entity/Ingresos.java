@@ -2,8 +2,11 @@ package com.josegelimergomez.core.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -13,11 +16,15 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "tbl_ingresos")
-public class Ingresos {
+public class Ingresos implements Serializable {
 
+
+    private static final long serialVersionUID = 1151510056951721912L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(name = "id_ingresos", columnDefinition = "BINARY(16)", nullable = false)
+    private UUID idIngresos;
 
     private String descripcion;
     private Double monto;

@@ -5,11 +5,13 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "tbl_employee")
@@ -23,9 +25,10 @@ public class Empleados implements Serializable {
     private static final long serialVersionUID = -5788327401301636491L;
 
     @Id
-    @GeneratedValue
-    @Column(name = "id_employee")
-    private Long idEmpleado;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(name = "id_empleado", columnDefinition = "BINARY(16)", nullable = false)
+    private UUID idEmpleado;
 
     @Column(name = "emp_ape", nullable = false)
     @Size(max = 80)

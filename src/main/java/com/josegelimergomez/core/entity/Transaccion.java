@@ -2,9 +2,12 @@ package com.josegelimergomez.core.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Table(name = "tbl_transaccion")
@@ -13,12 +16,15 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Transaccion {
+public class Transaccion implements Serializable {
 
+
+    private static final long serialVersionUID = -3420300021716209506L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_transaccion")
-    private Long idTransaccion;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(name = "id_transaccion", columnDefinition = "BINARY(16)")
+    private UUID idTransaccion;
     @Column(name = "numero_transaccion")
     private Long numTrasnsaccion;
     @Column(name = "descripcion")

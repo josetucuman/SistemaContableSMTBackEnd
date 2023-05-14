@@ -3,9 +3,12 @@ package com.josegelimergomez.core.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.GenericGenerator;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -15,12 +18,15 @@ import java.util.Objects;
 @AllArgsConstructor
 @Entity
 @Table(name = "tbl_pagos")
-public class Pagos {
+public class Pagos implements Serializable {
 
+
+    private static final long serialVersionUID = -2664753801278742208L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_pagos", nullable = false)
-    private Long id;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(name = "id_pagos", columnDefinition = "BINARY(16)", nullable = false)
+    private UUID idPagos;
     @Column(name = "numero_pago")
     private Long numPago;
     @Column(name = "fecha_pago")
@@ -34,16 +40,5 @@ public class Pagos {
     )
     private Presupuesto presupuesto;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Pagos pagos = (Pagos) o;
-        return getId() != null && Objects.equals(getId(), pagos.getId());
-    }
 
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
 }

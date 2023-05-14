@@ -2,9 +2,11 @@ package com.josegelimergomez.core.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -20,9 +22,10 @@ public class Cuenta implements Serializable {
 
     private static final long serialVersionUID = -2197231302792167820L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_cuenta", nullable = false)
-    private Long id;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(name = "id_cuenta", columnDefinition = "BINARY(16)", nullable = false)
+    private UUID idCuenta;
     @Column(name = "cuen_codigo")
     private String codigo;
     @Column(name = "desc")

@@ -3,9 +3,11 @@ package com.josegelimergomez.core.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -17,11 +19,11 @@ import java.time.LocalDate;
 public class Gastos implements Serializable {
 
     private static final long serialVersionUID = -5849695544437978250L;
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_gastos")
-    private Long id;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(name = "id_gastos", columnDefinition = "BINARY(16)")
+    private UUID idGastos;
     @Column(name = "gastos_fecha")
     @NotNull
     private LocalDate fecha;
